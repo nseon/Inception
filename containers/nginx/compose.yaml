@@ -1,5 +1,0 @@
-services:
-  nginx:
-    build: .
-    ports:
-      - "443:443"
