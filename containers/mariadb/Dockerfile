@@ -6,7 +6,7 @@ RUN chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
 RUN sed -i "s|skip-networking|#skip-networking|g" /etc/my.cnf.d/mariadb-server.cnf
 
-COPY entrypoint.sh .
+COPY --chmod=+x entrypoint.sh .
 
 EXPOSE 3306
 
