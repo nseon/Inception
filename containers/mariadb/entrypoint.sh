@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ ! -d "/var/lib/mysql/mysql" ]; then
-	db_pwd=$(cat /run/secrets/db_password)
+	db_pwd=$(cat /run/secrets/db_password.txt)
 	mariadb-install-db --datadir=/var/lib/mysql
 	
 	cat << EOF > /tmp/init.sql
