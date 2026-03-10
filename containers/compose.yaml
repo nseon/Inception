@@ -9,6 +9,7 @@ services:
       - inception
     depends_on:
       - wordpress
+
   mariadb:
     build: mariadb/
     ports:
@@ -21,6 +22,7 @@ services:
       - db_password
     networks:
       - inception
+
   wordpress:
     build: wordpress/
     volumes:
@@ -33,12 +35,15 @@ services:
       - db_password
     env_file:
       - .env
+
 volumes:
   db_data:
   wp_volume:
+
 secrets:
   db_password:
     file: ./.secrets/db_password.txt
+
 networks:
   inception:
     driver: bridge
