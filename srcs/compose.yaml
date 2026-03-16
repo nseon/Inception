@@ -1,0 +1,74 @@
+services:
+  nginx:
+    build: nginx/
+    ports:
+      - "443:443"
+    volumes:
+      - wp_data:/usr/share/webapps/
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    restart:
+      always
+
+  mariadb:
+    build: mariadb/
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file:
+      - .env
+    secrets:
+      - db_password
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin ping -h localhost -u root -p$(cat /run/secrets/db_password)"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - inception
+    restart:
+      always
+
+  wordpress:
+    build: wordpress/
+    volumes:
+      - wp_data:/usr/share/webapps/
+    networks:
+      - inception
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    secrets:
+      - db_password
+      - wp_admin
+      - wp_user
+    env_file:
+      - .env
+    restart:
+      always
+
+volumes:
+  db_data:
+    driver_opts:
+      type: none
+      device: "/home/nseon/data/db_data/"
+      o: bind
+  wp_data:
+    driver_opts:
+      type: none
+      device: "/home/nseon/data/wp_data/"
+      o: bind
+
+secrets:
+  db_password:
+    file: ./.secrets/db_password.txt
+  wp_admin:
+    file: ./.secrets/wp_admin.txt
+  wp_user:
+    file: ./.secrets/wp_user.txt
+
+networks:
+  inception:
+    driver: bridge
+

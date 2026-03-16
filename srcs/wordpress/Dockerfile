@@ -13,6 +13,8 @@ RUN apk add --no-cache \
 	php83-openssl \
 	php83-xml \
 	php83-zip \
+	php83-phar \
+	mariadb-client \
 	wget
 
 RUN	mkdir -p /usr/share/webapps/ && \
@@ -20,6 +22,10 @@ RUN	mkdir -p /usr/share/webapps/ && \
 	wget https://wordpress.org/latest.tar.gz && \
 	tar -xzvf latest.tar.gz && \
 	rm latest.tar.gz
+
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+    && chmod +x wp-cli.phar \
+    && mv wp-cli.phar /usr/local/bin/wp
 
 RUN sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" /etc/php83/php-fpm.d/www.conf
 
