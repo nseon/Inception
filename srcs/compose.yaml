@@ -52,12 +52,12 @@ volumes:
   db_data:
     driver_opts:
       type: none
-      device: "/home/nseon/data/db_data/"
+      device: "~/data/db_data/"
       o: bind
   wp_data:
     driver_opts:
       type: none
-      device: "/home/nseon/data/wp_data/"
+      device: "~/data/wp_data/"
       o: bind
 
 secrets:
