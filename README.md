@@ -1,0 +1,96 @@
+# Inception
+*This project has been created as part of the 42 curriculum by nseon.*
+
+# Description
+
+## Overview
+This project aims to introduce us to docker by implementing 3 services: nginx, mariadb and wordpress.
+
+## Definitions
+First of all let's explain what all of that is.
+
+**Docker** is a software platform that allows you to build, test, and deploy applications quickly. It package an application and its dependencies into a image, which is then used to deploy a container.
+
+An **image** is like a bluebrint of the application.
+
+A **container** is like a VM but dedicated to one application only.
+
+**Volumes** are persistent data stores for containers.
+
+A **Docker network** is a virtual communication layer that allows isolated containers to talk to each other.
+
+## Details
+In this project we have 3 containers, each containing a service:
+
+**-Nginx (a web server software)**
+**Role**: It handles SSL/TLS encryption and serves static files.
+**Interaction**: When a user requests a PHP page, Nginx doesn't process it directly. Instead, it forwards the request to the WordPress container using the FastCGI protocol.
+
+**-Wordpress (a content management system)**
+**Role**: It executes the PHP code to generate dynamic HTML content.
+**Interaction**: To build a page, WordPress needs data (posts, users, settings). It sends SQL queries to the MariaDB container.
+
+**-Mariadb (a database management system)**:
+**Role**: It securely stores all persistent data for the website.
+**Interaction**: It is strictly isolated and only accepts connections from the WordPress container. It has no direct exposure to the external network.
+
+# Instructions 
+
+setup, build and start the containers
+```
+make
+```
+
+setup the .secret/ and the data/
+```
+make setup
+```
+
+build docker images
+```
+make build
+```
+
+start containers
+```
+make up
+```
+
+stop containers
+```
+make stop
+```
+
+delete containers
+```
+make down
+```
+
+delete persistent data
+```
+make clear
+```
+
+stop the containers, clear the data, rebuild images and restart containers
+```
+make re
+```
+
+# Ressources
+
+>AI was used to improve understanding of certains concept and resolve some issues
+
+Docker documentation: https://docs.docker.com/
+
+Services documentation:
+	mariadb: https://mariadb.com/docs
+	wordpress: https://wordpress.org/documentation/
+	nginx: https://nginx.org/en/docs/
+
+nginx.conf: https://www.ionos.fr/digitalguide/hebergement/blogs/installer-wordpress-sur-nginx/
+
+Volumes documentation: https://docs.docker.com/engine/storage/volumes/
+
+FCGI: https://kubernetes.github.io/ingress-nginx/user-guide/fcgi-services/
+
+Docker on alpine: https://oleks.ca/2025/10/13/installation-de-docker-sur-alpine-linux/

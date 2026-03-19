@@ -28,6 +28,6 @@ down:
 clear:
 	@sudo rm -rf ~/data/db_data/* ~/data/wp_data/*
 
-re: down build up
+re: down clear build up
 
 .PHONY:setup build up stop down clear re
