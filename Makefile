@@ -1,3 +1,5 @@
+all: setup build up
+
 setup:
 	@mkdir -p srcs/.secrets
 	@if [ ! -f srcs/.secrets/db_password.txt ]; then \
@@ -12,18 +14,20 @@ setup:
 	@mkdir -p ~/data/db_data ~/data/wp_data
 
 build:
-	cd srcs ; docker compose build
+	@cd srcs ; docker compose build
 
 up:
-	cd srcs/ ; docker compose up -d
+	@cd srcs/ ; docker compose up -d
 
 stop:
-	cd srcs; docker compose stop
+	@cd srcs; docker compose stop
 
 down:
-	cd srcs/ ; docker compose down -v
+	@cd srcs/ ; docker compose down -v
 
 clear:
-	sudo rm -rf ~/data/db_data/* ~/data/wp_data/*
+	@sudo rm -rf ~/data/db_data/* ~/data/wp_data/*
 
 re: down build up
+
+.PHONY:setup build up stop down clear re
