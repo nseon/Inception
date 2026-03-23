@@ -87,10 +87,10 @@ make re
 
 Docker documentation: https://docs.docker.com/
 
-Services documentation:\n`
-	mariadb: https://mariadb.com/docs
-	wordpress: https://wordpress.org/documentation/
-	nginx: https://nginx.org/en/docs/
+Services documentation:<br>
+	mariadb: https://mariadb.com/docs <br>
+	wordpress: https://wordpress.org/documentation/ <br>
+	nginx: https://nginx.org/en/docs/ <br>
 
 nginx.conf: https://www.ionos.fr/digitalguide/hebergement/blogs/installer-wordpress-sur-nginx/
 
