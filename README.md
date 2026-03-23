@@ -22,17 +22,22 @@ A **Docker network** is a virtual communication layer that allows isolated conta
 ## Details
 In this project we have 3 containers, each containing a service:
 
-**-Nginx (a web server software)**
-**Role**: It handles SSL/TLS encryption and serves static files.
+**-Nginx (a web server software)**<br>
+**Role**: It handles SSL/TLS encryption and serves static files.<br>
 **Interaction**: When a user requests a PHP page, Nginx doesn't process it directly. Instead, it forwards the request to the WordPress container using the FastCGI protocol.
 
-**-Wordpress (a content management system)**
-**Role**: It executes the PHP code to generate dynamic HTML content.
+**-Wordpress (a content management system)**<br>
+**Role**: It executes the PHP code to generate dynamic HTML content.<br>
 **Interaction**: To build a page, WordPress needs data (posts, users, settings). It sends SQL queries to the MariaDB container.
 
-**-Mariadb (a database management system)**:
-**Role**: It securely stores all persistent data for the website.
+**-Mariadb (a database management system)**:<br>
+**Role**: It securely stores all persistent data for the website.<br>
 **Interaction**: It is strictly isolated and only accepts connections from the WordPress container. It has no direct exposure to the external network.
+
+## Project description
+### Virtual Machines vs Docker
+
+###
 
 # Instructions 
 
@@ -82,7 +87,7 @@ make re
 
 Docker documentation: https://docs.docker.com/
 
-Services documentation:
+Services documentation:\n`
 	mariadb: https://mariadb.com/docs
 	wordpress: https://wordpress.org/documentation/
 	nginx: https://nginx.org/en/docs/
