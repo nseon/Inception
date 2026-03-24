@@ -16,28 +16,29 @@ An **image** is like a bluebrint of the application.
 A **container** is like a VM but dedicated to one application only.
 
 **Volumes** are persistent data stores for containers.
+A Docker volume is fully managed by docker, instead of a Bind mount, which is managed by the host
 
-A **Docker network** is a virtual communication layer that allows isolated containers to talk to each other.
+A **Docker network (Bridge Network)** is a virtual and isolated communication layer that allows containers to have their own IP and talk to each other.
+Unlike a **Host network**, which is not isolated meaning containers share the host's IP. They listen directly on the host's ports.
+
+A **secret** is a file used to securely store sensitive data (passwords, API keys, certificates)
+
+An **environment variable** is a dynamic value on your computer that can affect the behavior of processes running on the computer
 
 ## Details
 In this project we have 3 containers, each containing a service:
 
-**-Nginx (a web server software)**<br>
+**- Nginx (a web server software)**<br>
 **Role**: It handles SSL/TLS encryption and serves static files.<br>
 **Interaction**: When a user requests a PHP page, Nginx doesn't process it directly. Instead, it forwards the request to the WordPress container using the FastCGI protocol.
 
-**-Wordpress (a content management system)**<br>
+**- Wordpress (a content management system)**<br>
 **Role**: It executes the PHP code to generate dynamic HTML content.<br>
 **Interaction**: To build a page, WordPress needs data (posts, users, settings). It sends SQL queries to the MariaDB container.
 
-**-Mariadb (a database management system)**:<br>
+**- Mariadb (a database management system)**:<br>
 **Role**: It securely stores all persistent data for the website.<br>
 **Interaction**: It is strictly isolated and only accepts connections from the WordPress container. It has no direct exposure to the external network.
-
-## Project description
-### Virtual Machines vs Docker
-
-###
 
 # Instructions 
 
