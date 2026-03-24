@@ -11,6 +11,7 @@ services:
       - wordpress
     restart:
       always
+    image: nginx
 
   mariadb:
     build: mariadb/
@@ -29,6 +30,7 @@ services:
       - inception
     restart:
       always
+    image: mariadb
 
   wordpress:
     build: wordpress/
@@ -47,6 +49,7 @@ services:
       - .env
     restart:
       always
+    image: wordpress
 
 volumes:
   db_data:
