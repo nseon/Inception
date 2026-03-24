@@ -35,4 +35,4 @@ To access the website:
 ```https://<host_ip>/``` or ```nseon.42.fr```
  
 To access the WordPress admin panel:
-```https://<host_ip>/wp-admin```
+```https://<host_ip>/wp-admin``` or ```nseon.42.fr/wp-admin```
