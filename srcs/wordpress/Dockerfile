@@ -1,4 +1,4 @@
-FROM alpine:3.22.3
+FROM alpine:3.22
 
 RUN apk add --no-cache \
 	php83 \
@@ -14,7 +14,6 @@ RUN apk add --no-cache \
 	php83-xml \
 	php83-zip \
 	php83-phar \
-	mariadb-client \
 	wget
 
 RUN	mkdir -p /usr/share/webapps/ && \

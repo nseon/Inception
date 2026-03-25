@@ -1,4 +1,4 @@
-FROM alpine:3.22.3
+FROM alpine:3.22
 
 RUN apk add --no-cache nginx openssl && mkdir -p etc/nginx/ssl
 

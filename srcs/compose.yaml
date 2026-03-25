@@ -1,5 +1,6 @@
 services:
   nginx:
+    hostname: ${DOMAIN_NAME}
     build: nginx/
     ports:
       - "443:443"
@@ -55,12 +56,12 @@ volumes:
   db_data:
     driver_opts:
       type: none
-      device: "home/nseon/data/db_data/"
+      device: "${HOME}/data/db_data/"
       o: bind
   wp_data:
     driver_opts:
       type: none
-      device: "home/nseon/data/wp_data/"
+      device: "${HOME}/data/wp_data/"
       o: bind
 
 secrets:
@@ -74,4 +75,3 @@ secrets:
 networks:
   inception:
     driver: bridge
-

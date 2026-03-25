@@ -1,4 +1,4 @@
-FROM alpine:3.22.3
+FROM alpine:3.22
 
 RUN apk add --no-cache mariadb mariadb-client && \
 	mkdir -p /var/lib/mysql /run/mysqld && \
