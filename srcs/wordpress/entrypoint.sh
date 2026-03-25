@@ -29,9 +29,9 @@ if ! wp core is-installed; then
     --skip-email \
     --allow-root
     
-    wp user create $WP_USER $WP_USER_EMAIL \
+    wp user create $wp_user $wp_mail \
     --role=author \
-    --user_pass=$WP_USER_PWD \
+    --user_pass=$wp_passwd \
     --allow-root
 fi
 
